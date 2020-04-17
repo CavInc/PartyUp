@@ -37,6 +37,8 @@
 
         <Button
             android:id="@+id/login_login"
+            android:background="@drawable/button_red_bg"
+            android:textColor="@android:color/white"
             android:layout_below="@+id/login_pass_ti"
             android:text="Войти"
             android:layout_width="match_parent"
@@ -48,6 +50,7 @@
     <TextView
         android:id="@+id/login_registry"
         android:text="Регистрация..."
+        android:textColor="@color/app_gray_50_dark"
         android:textSize="20sp"
         android:layout_marginBottom="24dp"
         android:layout_alignParentBottom="true"

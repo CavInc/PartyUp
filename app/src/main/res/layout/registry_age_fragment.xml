@@ -18,6 +18,9 @@
     <Button
         android:id="@+id/registry_next"
         android:text="Продолжить"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_red_bg"
+        android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
