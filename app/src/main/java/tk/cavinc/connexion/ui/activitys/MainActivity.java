@@ -1,4 +1,4 @@
-package tk.cavinc.connexion.ui;
+package tk.cavinc.connexion.ui.activitys;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;

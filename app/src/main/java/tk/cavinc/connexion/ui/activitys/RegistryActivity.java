@@ -12,6 +12,7 @@ import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
 import tk.cavinc.connexion.ui.fragments.RegistryAgeFragment;
 import tk.cavinc.connexion.ui.helpers.LoadFramentListener;
+import tk.cavinc.connexion.ui.helpers.RegistryViewModel;
 
 /**
  * Created by cav on 13.04.20.
@@ -25,6 +26,8 @@ public class RegistryActivity extends AppCompatActivity implements LoadFramentLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registry);
+
+        //RegistryViewModel registryViewModel = ViewModelProviders.of(this).get(RegistryViewModel.class);
 
         setupToolBar();
         viewFragment(new RegistryAgeFragment(),"REG_AGE",false);
