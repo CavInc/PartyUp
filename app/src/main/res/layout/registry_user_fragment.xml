@@ -2,8 +2,17 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/msg"
+        android:layout_above="@+id/user_ll"
+        android:text="Укажите данные"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:id="@+id/user_ll"
         android:orientation="vertical"
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
@@ -15,23 +24,34 @@
             <EditText
                 android:id="@+id/reg_email"
                 android:hint="Е - майл"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
-        <TextSwitcher
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
                 android:hint="Имя"
+                android:imeOptions="actionNext"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-        </TextSwitcher>
+        </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
                 android:hint="Пароль"
+                android:imeOptions="actionNext"
+                android:inputType="textWebPassword"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
@@ -41,6 +61,10 @@
             android:layout_height="wrap_content">
             <EditText
                 android:hint="Повтор пароля"
+                android:inputType="textWebPassword"
+                android:imeOptions="actionGo"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>

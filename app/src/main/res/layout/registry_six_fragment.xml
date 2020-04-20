@@ -23,11 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/six_male_bt"
             android:text="Мужской"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
+            android:id="@+id/six_female_bt"
             android:text="Женский"
             android:layout_weight="1"
             android:layout_width="match_parent"
