@@ -1,5 +1,6 @@
 package tk.cavinc.connexion.ui.activitys;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -62,5 +63,10 @@ public class RegistryActivity extends AppCompatActivity implements LoadFramentLi
     @Override
     public void onLoadFragment(Fragment fragment, String tag) {
         viewFragment(fragment,tag,false);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

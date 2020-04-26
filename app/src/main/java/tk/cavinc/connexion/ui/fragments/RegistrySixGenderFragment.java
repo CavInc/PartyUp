@@ -34,7 +34,7 @@ public class RegistrySixGenderFragment extends BaseFragment implements View.OnCl
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.registry_next) {
-
+            setLoadFramentListener(new RegistryPhotoFragment(),"REG_PHOTO");
         }
         if (view.getId() == R.id.six_female_bt) {
             mSixFemale.setBackground(getResources().getDrawable(R.drawable.button_red_bg));

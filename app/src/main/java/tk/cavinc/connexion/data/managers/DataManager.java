@@ -2,6 +2,8 @@ package tk.cavinc.connexion.data.managers;
 
 import android.content.Context;
 
+import java.io.File;
+
 import tk.cavinc.connexion.utils.App;
 
 /**
@@ -28,4 +30,13 @@ public class DataManager {
     public Context getContext() {
         return mContext;
     }
+
+    // получаем путь папки приложения на Storage
+    public File getAppStoragePath(){
+
+        File resutl = mContext.getExternalFilesDir(null);
+
+        return resutl;
+    }
+
 }
