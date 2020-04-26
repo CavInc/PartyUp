@@ -67,4 +67,25 @@ public class UserModel {
     public void setPhoto(String photo) {
         mPhoto = photo;
     }
+
+
+    public void setAge(int age) {
+        mAge = age;
+    }
+
+    public void setName(String name) {
+        mName = name;
+    }
+
+    public void setEmail(String email) {
+        mEmail = email;
+    }
+
+    public void setSix(int six) {
+        mSix = six;
+    }
+
+    public void setGender(String gender) {
+        mGender = gender;
+    }
 }
