@@ -9,12 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tk.cavinc.connexion.R;
+import tk.cavinc.connexion.ui.helpers.OnBackPressedListener;
 
 /**
  * Created by cav on 13.04.20.
  */
 
-public class RegistryUserFragment extends BaseFragment implements View.OnClickListener {
+public class RegistryUserFragment extends BaseFragment implements View.OnClickListener,OnBackPressedListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -26,7 +27,12 @@ public class RegistryUserFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.registry_next) {
-            setLoadFramentListener(new RegistrySixGenderFragment(),"REG_USER");
+            setLoadFramentListener(new RegistrySixGenderFragment(),"REG_SIX");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        setLoadFramentListener(new RegistryAgeFragment(),"REG_AGE");
     }
 }

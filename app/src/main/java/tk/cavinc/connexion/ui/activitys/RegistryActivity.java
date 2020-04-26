@@ -13,6 +13,7 @@ import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
 import tk.cavinc.connexion.ui.fragments.RegistryAgeFragment;
 import tk.cavinc.connexion.ui.helpers.LoadFramentListener;
+import tk.cavinc.connexion.ui.helpers.OnBackPressedListener;
 import tk.cavinc.connexion.ui.helpers.RegistryViewModel;
 
 /**
@@ -67,6 +68,13 @@ public class RegistryActivity extends AppCompatActivity implements LoadFramentLi
 
     @Override
     public void onBackPressed() {
+        OnBackPressedListener backPressedListener = null;
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (fragment instanceof OnBackPressedListener) {
+            backPressedListener = (OnBackPressedListener) fragment;
+            backPressedListener.onBackPressed();
+            return;
+        }
         super.onBackPressed();
     }
 }

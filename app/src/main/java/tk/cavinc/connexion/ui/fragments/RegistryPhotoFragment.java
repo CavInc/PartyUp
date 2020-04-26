@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 
 import tk.cavinc.connexion.R;
+import tk.cavinc.connexion.ui.helpers.OnBackPressedListener;
 import tk.cavinc.connexion.utils.Func;
 
 import static android.app.Activity.RESULT_OK;
@@ -26,7 +27,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by cav on 25.04.20.
  */
 
-public class RegistryPhotoFragment extends BaseFragment implements View.OnClickListener{
+public class RegistryPhotoFragment extends BaseFragment implements View.OnClickListener,OnBackPressedListener{
 
     private static final int REQUEST_CAMERA_PICTURE = 456;
     private ImageView mPhoto;
@@ -49,6 +50,9 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
     public void onClick(View v) {
         if (v.getId() == R.id.reg_photo_bt) {
             loadCameraPhoto();
+        }
+        if (v.getId() == R.id.registry_next) {
+
         }
     }
 
@@ -91,5 +95,10 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        setLoadFramentListener(new RegistrySixGenderFragment(),"REG_SIX");
     }
 }
