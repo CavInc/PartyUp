@@ -1,6 +1,7 @@
 package tk.cavinc.connexion.ui.activitys;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,7 +30,8 @@ public class RegistryActivity extends AppCompatActivity implements LoadFramentLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registry);
 
-        //RegistryViewModel registryViewModel = ViewModelProviders.of(this).get(RegistryViewModel.class);
+        RegistryViewModel registryViewModel = ViewModelProviders.of(this).get(RegistryViewModel.class);
+
 
         setupToolBar();
         viewFragment(new RegistryAgeFragment(),"REG_AGE",false);

@@ -13,6 +13,10 @@ public class UserModel {
     private String mGender;
     private String mPhoto;
 
+    public UserModel(){
+
+    }
+
     public UserModel(int id, String name, String email, int age, int six, String gender) {
         mId = id;
         mName = name;
