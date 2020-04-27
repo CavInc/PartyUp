@@ -12,6 +12,7 @@ public class UserModel {
     private int mSix;
     private String mGender;
     private String mPhoto;
+    private String mPass;
 
     public UserModel(){
         mSix = -1;
@@ -87,5 +88,17 @@ public class UserModel {
 
     public void setGender(String gender) {
         mGender = gender;
+    }
+
+    public void setId(int id) {
+        mId = id;
+    }
+
+    public String getPass() {
+        return mPass;
+    }
+
+    public void setPass(String pass) {
+        mPass = pass;
     }
 }

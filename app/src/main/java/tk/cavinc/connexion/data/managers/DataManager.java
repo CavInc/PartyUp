@@ -14,7 +14,7 @@ public class DataManager {
     private static DataManager INSTANCE = null;
 
     private Context mContext;
-    //private PrefManager mPreManager;
+    private PrefManager mPreManager;
 
     public static DataManager getInstance() {
         if (INSTANCE==null){
@@ -25,10 +25,15 @@ public class DataManager {
 
     public DataManager() {
         mContext = App.getContext();
+        mPreManager = new PrefManager();
     }
 
     public Context getContext() {
         return mContext;
+    }
+
+    public PrefManager getPreManager() {
+        return mPreManager;
     }
 
     // получаем путь папки приложения на Storage
