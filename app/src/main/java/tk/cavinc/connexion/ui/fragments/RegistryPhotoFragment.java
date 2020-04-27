@@ -75,20 +75,6 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
     }
 
     private void sendData() {
-        getDataManager().getRetrofit().create(UserGetApi.class)
-                .getData().enqueue(new Callback<GetUserRes>() {
-            @Override
-            public void onResponse(retrofit2.Call<GetUserRes> call, Response<GetUserRes> response) {
-                GetUserRes data = response.body();
-
-            }
-
-            @Override
-            public void onFailure(retrofit2.Call<GetUserRes> call, Throwable t) {
-                Toast.makeText(getActivity(),t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-
     }
 
     private void storeData() {

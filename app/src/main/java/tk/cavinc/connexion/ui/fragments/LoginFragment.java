@@ -8,15 +8,36 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tk.cavinc.connexion.R;
+import tk.cavinc.connexion.data.managers.DataManager;
+import tk.cavinc.connexion.data.networks.UserGetApi;
+import tk.cavinc.connexion.data.networks.res.GetUserPost;
+import tk.cavinc.connexion.data.networks.res.GetUserRes;
 import tk.cavinc.connexion.ui.activitys.RegistryActivity;
+import tk.cavinc.connexion.utils.Func;
 
 /**
  * Created by cav on 13.04.20.
  */
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
+    private DataManager mDataManager;
+
+    private EditText mEmail;
+    private EditText mPass;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mDataManager = DataManager.getInstance();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,6 +45,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         rootView.findViewById(R.id.login_registry).setOnClickListener(this);
         rootView.findViewById(R.id.login_login).setOnClickListener(this);
+
+        mEmail = rootView.findViewById(R.id.login_email);
+        mPass = rootView.findViewById(R.id.login_pass);
 
         return rootView;
     }
@@ -35,7 +59,25 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             startActivity(intent);
         }
         if (view.getId() == R.id.login_login) {
-
+            sendData();
         }
+    }
+
+    private void sendData() {
+        GetUserPost userPost = new GetUserPost(mEmail.getText().toString(), Func.MD5(mPass.getText().toString()));
+        mDataManager.getRetrofit().create(UserGetApi.class)
+                .getData(userPost)
+                .enqueue(new Callback<GetUserRes>() {
+                    @Override
+                    public void onResponse(Call<GetUserRes> call, Response<GetUserRes> response) {
+                        GetUserRes data = response.body();
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<GetUserRes> call, Throwable t) {
+                        Toast.makeText(getActivity(),t.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }

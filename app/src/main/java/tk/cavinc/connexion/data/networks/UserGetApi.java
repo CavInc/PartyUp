@@ -1,7 +1,10 @@
 package tk.cavinc.connexion.data.networks;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
+import tk.cavinc.connexion.data.models.UserModel;
+import tk.cavinc.connexion.data.networks.res.GetUserPost;
 import tk.cavinc.connexion.data.networks.res.GetUserRes;
 
 /**
@@ -10,5 +13,5 @@ import tk.cavinc.connexion.data.networks.res.GetUserRes;
 
 public interface UserGetApi {
     @POST("api/getuser")
-    Call<GetUserRes> getData();
+    Call<GetUserRes> getData(@Body GetUserPost userPost);
 }
