@@ -10,16 +10,22 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
 
+import retrofit2.Callback;
+import retrofit2.Response;
 import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.models.UserModel;
+import tk.cavinc.connexion.data.networks.UserGetApi;
+import tk.cavinc.connexion.data.networks.res.GetUserRes;
 import tk.cavinc.connexion.ui.helpers.OnBackPressedListener;
 import tk.cavinc.connexion.ui.helpers.RegistryViewModel;
 import tk.cavinc.connexion.utils.Func;
@@ -64,13 +70,33 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
         if (v.getId() == R.id.registry_next) {
             storeData();
             // оправяляем данные о регистрации
+            sendData();
         }
     }
 
+    private void sendData() {
+        getDataManager().getRetrofit().create(UserGetApi.class)
+                .getData().enqueue(new Callback<GetUserRes>() {
+            @Override
+            public void onResponse(retrofit2.Call<GetUserRes> call, Response<GetUserRes> response) {
+                GetUserRes data = response.body();
+
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<GetUserRes> call, Throwable t) {
+                Toast.makeText(getActivity(),t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
     private void storeData() {
-        UserModel model = mUserModel.getUserModel();
-        model.setPhoto(mPhotoFile.getAbsolutePath());
-        mUserModel.setUserModel(model);
+        if (mPhotoFile != null) {
+            UserModel model = mUserModel.getUserModel();
+            model.setPhoto(mPhotoFile.getAbsolutePath());
+            mUserModel.setUserModel(model);
+        }
     }
 
     private void loadCameraPhoto(){

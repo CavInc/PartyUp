@@ -5,7 +5,7 @@ package tk.cavinc.connexion.utils;
  */
 
 public interface ConstantManager {
-    String BASE_URL = "";
+    String BASE_URL = "http://192.168.1.23:5000";
 
     int FEMALE = 0;
     int MALE = 1;

@@ -4,7 +4,10 @@ import android.content.Context;
 
 import java.io.File;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import tk.cavinc.connexion.utils.App;
+import tk.cavinc.connexion.utils.ConstantManager;
 
 /**
  * Created by cav on 13.04.20.
@@ -16,6 +19,8 @@ public class DataManager {
     private Context mContext;
     private PrefManager mPreManager;
 
+    private Retrofit mRetrofit;
+
     public static DataManager getInstance() {
         if (INSTANCE==null){
             INSTANCE = new DataManager();
@@ -26,6 +31,11 @@ public class DataManager {
     public DataManager() {
         mContext = App.getContext();
         mPreManager = new PrefManager();
+
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl(ConstantManager.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     public Context getContext() {
@@ -44,4 +54,7 @@ public class DataManager {
         return resutl;
     }
 
+    public Retrofit getRetrofit() {
+        return mRetrofit;
+    }
 }
