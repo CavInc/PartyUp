@@ -1,5 +1,6 @@
 package tk.cavinc.connexion.ui.fragments;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,7 +19,9 @@ import java.io.File;
 import java.io.IOException;
 
 import tk.cavinc.connexion.R;
+import tk.cavinc.connexion.data.models.UserModel;
 import tk.cavinc.connexion.ui.helpers.OnBackPressedListener;
+import tk.cavinc.connexion.ui.helpers.RegistryViewModel;
 import tk.cavinc.connexion.utils.Func;
 
 import static android.app.Activity.RESULT_OK;
@@ -28,10 +31,17 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class RegistryPhotoFragment extends BaseFragment implements View.OnClickListener,OnBackPressedListener{
+    private RegistryViewModel mUserModel;
 
     private static final int REQUEST_CAMERA_PICTURE = 456;
     private ImageView mPhoto;
     private File mPhotoFile;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mUserModel = ViewModelProviders.of(getActivity()).get(RegistryViewModel.class);
+    }
 
     @Nullable
     @Override
@@ -52,8 +62,15 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
             loadCameraPhoto();
         }
         if (v.getId() == R.id.registry_next) {
-
+            storeData();
+            // оправяляем данные о регистрации
         }
+    }
+
+    private void storeData() {
+        UserModel model = mUserModel.getUserModel();
+        model.setPhoto(mPhotoFile.getAbsolutePath());
+        mUserModel.setUserModel(model);
     }
 
     private void loadCameraPhoto(){
@@ -90,6 +107,7 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
             case REQUEST_CAMERA_PICTURE:
                 if (resultCode == RESULT_OK && mPhotoFile !=null){
                     mPhoto.setImageBitmap(Func.getPicSize(mPhotoFile.toString()));
+                    storeData();
                 } else {
                     mPhotoFile = null;
                 }

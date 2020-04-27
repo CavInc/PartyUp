@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Party Up</string>
+    <string name="dialog_close">Закрыть</string>
 </resources>

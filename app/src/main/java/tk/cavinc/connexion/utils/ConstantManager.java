@@ -5,4 +5,9 @@ package tk.cavinc.connexion.utils;
  */
 
 public interface ConstantManager {
+    String BASE_URL = "";
+
+    int FEMALE = 0;
+    int MALE = 1;
+
 }

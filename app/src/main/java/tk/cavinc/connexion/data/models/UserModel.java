@@ -14,7 +14,7 @@ public class UserModel {
     private String mPhoto;
 
     public UserModel(){
-
+        mSix = -1;
     }
 
     public UserModel(int id, String name, String email, int age, int six, String gender) {
