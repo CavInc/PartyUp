@@ -25,6 +25,8 @@ public class UserModel {
     @Expose
     private String mGender;
 
+    @SerializedName("photo")
+    @Expose
     private String mPhoto;
     @SerializedName("password")
     @Expose
