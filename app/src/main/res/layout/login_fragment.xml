@@ -20,6 +20,10 @@
             <EditText
                 android:id="@+id/login_email"
                 android:hint="Емайл"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
@@ -31,6 +35,10 @@
             <EditText
                 android:id="@+id/login_pass"
                 android:hint="Пароль"
+                android:imeOptions="actionGo"
+                android:inputType="textWebPassword"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
