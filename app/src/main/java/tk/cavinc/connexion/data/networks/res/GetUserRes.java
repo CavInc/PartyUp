@@ -22,6 +22,10 @@ public class GetUserRes {
     @Expose
     private String error;
 
+    @SerializedName("user")
+    @Expose
+    private User user;
+
     public boolean isStatus() {
         return status;
     }
@@ -32,5 +36,38 @@ public class GetUserRes {
 
     public String getError() {
         return error;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public class User{
+        @SerializedName("id")
+        @Expose
+        private Integer id;
+        @SerializedName("guid")
+        @Expose
+        private String guid;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getGuid() {
+            return guid;
+        }
+
+        public void setGuid(String guid) {
+            this.guid = guid;
+        }
     }
 }

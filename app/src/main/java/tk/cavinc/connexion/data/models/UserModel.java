@@ -1,17 +1,33 @@
 package tk.cavinc.connexion.data.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by cav on 13.04.20.
  */
 
 public class UserModel {
     private int mId;
+    @SerializedName("name")
+    @Expose
     private String mName;
+    @SerializedName("email")
+    @Expose
     private String mEmail;
+    @SerializedName("age")
+    @Expose
     private int mAge;
+    @SerializedName("six")
+    @Expose
     private int mSix;
+    @SerializedName("gender")
+    @Expose
     private String mGender;
+
     private String mPhoto;
+    @SerializedName("password")
+    @Expose
     private String mPass;
 
     public UserModel(){

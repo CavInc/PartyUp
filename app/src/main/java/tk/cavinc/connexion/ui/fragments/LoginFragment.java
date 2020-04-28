@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import tk.cavinc.connexion.utils.Func;
  */
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
+    private static final String TAG = "DDD";
     private DataManager mDataManager;
 
     private EditText mEmail;
@@ -71,6 +73,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void onResponse(Call<GetUserRes> call, Response<GetUserRes> response) {
                         GetUserRes data = response.body();
+                        Log.d(TAG,"DATA :"+data.getResult()+" "+data.isStatus());
 
                     }
 

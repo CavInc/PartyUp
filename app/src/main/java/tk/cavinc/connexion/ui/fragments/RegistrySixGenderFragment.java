@@ -1,6 +1,5 @@
 package tk.cavinc.connexion.ui.fragments;
 
-import android.app.Fragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;

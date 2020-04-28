@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.models.UserModel;
 import tk.cavinc.connexion.ui.helpers.OnBackPressedListener;
 import tk.cavinc.connexion.ui.helpers.RegistryViewModel;
+import tk.cavinc.connexion.utils.Func;
 
 /**
  * Created by cav on 13.04.20.
@@ -86,6 +86,7 @@ public class RegistryUserFragment extends BaseFragment implements View.OnClickLi
         model.setEmail(mEmail.getText().toString());
         model.setName(mUser.getText().toString());
         //TODO добавить пароль.
+        model.setPass(Func.MD5(mPass1.getText().toString()));
         mUserModel.setUserModel(model);
     }
 

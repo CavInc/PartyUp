@@ -14,4 +14,7 @@ import tk.cavinc.connexion.data.networks.res.GetUserRes;
 public interface UserGetApi {
     @POST("api/getuser")
     Call<GetUserRes> getData(@Body GetUserPost userPost);
+
+    @POST("api/adduser")
+    Call<GetUserRes> addUser(@Body UserModel getUserRes);
 }

@@ -10,7 +10,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
-import android.telecom.Call;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +37,7 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class RegistryPhotoFragment extends BaseFragment implements View.OnClickListener,OnBackPressedListener{
+    private static final String TAG = "RPF";
     private RegistryViewModel mUserModel;
 
     private static final int REQUEST_CAMERA_PICTURE = 456;
@@ -75,6 +76,24 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
     }
 
     private void sendData() {
+        UserModel model = mUserModel.getUserModel();
+        getDataManager().getRetrofit().create(UserGetApi.class)
+                .addUser(model)
+                .enqueue(new Callback<GetUserRes>() {
+                    @Override
+                    public void onResponse(retrofit2.Call<GetUserRes> call, Response<GetUserRes> response) {
+                        GetUserRes data = response.body();
+                        Log.d(TAG,"DATA :"+data.getResult()+" "+data.isStatus());
+                        if (data.getUser() != null) {
+                            Log.d(TAG,data.getUser().getGuid());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(retrofit2.Call<GetUserRes> call, Throwable t) {
+                        Toast.makeText(getActivity(),t.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     private void storeData() {
