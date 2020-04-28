@@ -1,6 +1,8 @@
 package tk.cavinc.connexion.data.managers;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import java.io.File;
 
@@ -52,6 +54,13 @@ public class DataManager {
         File resutl = mContext.getExternalFilesDir(null);
 
         return resutl;
+    }
+
+    // проверяем включен ли интернетик
+    public boolean isOnline(){
+        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);;
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     public Retrofit getRetrofit() {
