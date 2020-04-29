@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activitys.RegistryActivity"/>
+        <activity android:name=".ui.activitys.WorkActivity"/>
+
         <provider
             android:authorities="${applicationId}.provider"
             android:name="android.support.v4.content.FileProvider"

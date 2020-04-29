@@ -12,6 +12,7 @@ public class PrefManager {
 
     private static final String REGISTRY_USER_ID = "RUID";
     private static final String REGISTRY_USER_GUID = "RUG";
+    private static final String LOGIN = "LOGIN_USER";
     private SharedPreferences mSharedPreferences;
 
     public PrefManager(){
@@ -36,6 +37,16 @@ public class PrefManager {
     public void setRegistryUserGuid(String registryUserGuid) {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString(REGISTRY_USER_GUID,registryUserGuid);
+        editor.apply();
+    }
+
+    public boolean isLogin(){
+        return mSharedPreferences.getBoolean(LOGIN,false);
+    }
+
+    public void setLogin(boolean value) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putBoolean(LOGIN,value);
         editor.apply();
     }
 }

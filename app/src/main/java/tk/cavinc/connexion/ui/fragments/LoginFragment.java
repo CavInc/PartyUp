@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -21,6 +22,7 @@ import tk.cavinc.connexion.data.networks.UserGetApi;
 import tk.cavinc.connexion.data.networks.res.GetUserPost;
 import tk.cavinc.connexion.data.networks.res.GetUserRes;
 import tk.cavinc.connexion.ui.activitys.RegistryActivity;
+import tk.cavinc.connexion.ui.activitys.WorkActivity;
 import tk.cavinc.connexion.utils.Func;
 
 /**
@@ -33,6 +35,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     private EditText mEmail;
     private EditText mPass;
+
+    private TextView mLoginMsg;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         mEmail = rootView.findViewById(R.id.login_email);
         mPass = rootView.findViewById(R.id.login_pass);
+
+        mLoginMsg = rootView.findViewById(R.id.login_msg);
 
         return rootView;
     }
@@ -74,7 +80,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     public void onResponse(Call<GetUserRes> call, Response<GetUserRes> response) {
                         GetUserRes data = response.body();
                         Log.d(TAG,"DATA :"+data.getResult()+" "+data.isStatus());
-
+                        if (data.getUser().getGuid() == null) {
+                            Log.d(TAG,"NO USER");
+                            mLoginMsg.setText("Не верный email или пароль");
+                            mLoginMsg.setVisibility(View.VISIBLE);
+                        } else {
+                            mLoginMsg.setVisibility(View.GONE);
+                            mDataManager.getPreManager().setLogin(true);
+                            Intent intent = new Intent(getActivity(),WorkActivity.class);
+                            startActivity(intent);
+                        }
                     }
 
                     @Override
