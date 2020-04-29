@@ -77,6 +77,10 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
 
     private void sendData() {
         UserModel model = mUserModel.getUserModel();
+        if (model.getPhoto().length() != 0) {
+            model.setPhoto(Func.getUtlToStr(model.getPhoto())); // передаем фото в base 64
+        }
+
         getDataManager().getRetrofit().create(UserGetApi.class)
                 .addUser(model)
                 .enqueue(new Callback<GetUserRes>() {
@@ -86,6 +90,9 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
                         Log.d(TAG,"DATA :"+data.getResult()+" "+data.isStatus());
                         if (data.getUser() != null) {
                             Log.d(TAG,data.getUser().getGuid());
+                            getDataManager().getPreManager().setRegistryUserId(data.getUser().getId());
+                            getDataManager().getPreManager().setRegistryUserGuid(data.getUser().getGuid());
+
                         }
                     }
 
