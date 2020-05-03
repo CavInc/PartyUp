@@ -87,6 +87,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                         } else {
                             mLoginMsg.setVisibility(View.GONE);
                             mDataManager.getPreManager().setLogin(true);
+                            mDataManager.getPreManager().setRegistryUserId(data.getUser().getId());
+                            mDataManager.getPreManager().setRegistryUserGuid(data.getUser().getGuid());
                             Intent intent = new Intent(getActivity(),WorkActivity.class);
                             startActivity(intent);
                         }

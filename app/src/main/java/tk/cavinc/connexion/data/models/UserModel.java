@@ -8,7 +8,10 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class UserModel {
+    @SerializedName("id")
+    @Expose
     private int mId;
+
     @SerializedName("name")
     @Expose
     private String mName;
