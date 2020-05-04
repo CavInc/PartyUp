@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import tk.cavinc.connexion.data.managers.DataManager;
 import tk.cavinc.connexion.data.models.UserModel;
 import tk.cavinc.connexion.ui.adapters.StreamRVAdapter;
 import tk.cavinc.connexion.ui.helpers.WorkViewModel;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by cav on 29.04.20.
@@ -81,6 +84,7 @@ public class StreamFragment extends Fragment {
     }
 
     private void updateUI(){
+        Log.d(TAG,"UPDATE UI");
         ArrayList<UserModel> data = model.getUsers();
         if (mAdapter == null){
             mAdapter = new StreamRVAdapter(data);

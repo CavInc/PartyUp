@@ -13,6 +13,8 @@ public class PrefManager {
     private static final String REGISTRY_USER_ID = "RUID";
     private static final String REGISTRY_USER_GUID = "RUG";
     private static final String LOGIN = "LOGIN_USER";
+    private static final String USER_PHOTO = "USER_PHOTO";
+    private static final String WARNING_MEETME = "WMME";
     private SharedPreferences mSharedPreferences;
 
     public PrefManager(){
@@ -47,6 +49,26 @@ public class PrefManager {
     public void setLogin(boolean value) {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putBoolean(LOGIN,value);
+        editor.apply();
+    }
+
+    public String getUserPhoto(){
+        return mSharedPreferences.getString(USER_PHOTO,null);
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(USER_PHOTO,userPhoto);
+        editor.apply();
+    }
+
+    public boolean isWarningMeetMe(){
+        return mSharedPreferences.getBoolean(WARNING_MEETME,false);
+    }
+
+    public void setWarningMeetme(boolean flag){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putBoolean(WARNING_MEETME,flag);
         editor.apply();
     }
 }

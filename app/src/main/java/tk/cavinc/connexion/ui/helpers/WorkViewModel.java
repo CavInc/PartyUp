@@ -26,6 +26,9 @@ public class WorkViewModel extends ViewModel {
     private ArrayList<UserModel> mUsers;
 
     MutableLiveData<ArrayList<UserModel>> liveData;
+    public WorkViewModel(){
+        mUsers = new ArrayList<>();
+    }
 
     public LiveData<ArrayList<UserModel>> getLiveData(Retrofit retrofit, String guid){
         if (liveData == null) {
@@ -69,5 +72,10 @@ public class WorkViewModel extends ViewModel {
             }
         });
 
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
     }
 }

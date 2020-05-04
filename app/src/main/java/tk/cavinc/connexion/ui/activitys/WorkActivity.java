@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
 import tk.cavinc.connexion.ui.fragments.MeetMeFragment;
+import tk.cavinc.connexion.ui.fragments.SpeedDatingFragment;
 import tk.cavinc.connexion.ui.fragments.StreamFragment;
 import tk.cavinc.connexion.ui.helpers.WorkViewModel;
 
@@ -27,6 +28,7 @@ public class WorkActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    private WorkViewModel model;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +43,8 @@ public class WorkActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        WorkViewModel model = ViewModelProviders.of(this).get(WorkViewModel.class);
-        model.loadUsers(mDataManager.getRetrofit(),mDataManager.getPreManager().getRegistryUserGuid());
+        model = ViewModelProviders.of(this).get(WorkViewModel.class);
+        //model.loadUsers(mDataManager.getRetrofit(),mDataManager.getPreManager().getRegistryUserGuid());
     }
 
 
@@ -56,16 +58,20 @@ public class WorkActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new StreamFragment();
+                    return new HotOrNot();
                 case 1:
+                    return new StreamFragment();
+                case 2:
                     return new MeetMeFragment();
+                case 3:
+                    return new SpeedDatingFragment();
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Nullable
@@ -73,9 +79,13 @@ public class WorkActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position){
                 case 0:
-                    return "Стрим";
+                    return "hot or not";
                 case 1:
+                    return "Стрим";
+                case 2:
                     return "Знакомства";
+                case 3:
+                    return "Быстрые знакомства";
                 default:
                     return null;
             }

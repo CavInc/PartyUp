@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.models.UserModel;
+import tk.cavinc.connexion.ui.helpers.StreamItemClickListener;
 
 /**
  * Created by cav on 29.04.20.
@@ -20,8 +21,15 @@ import tk.cavinc.connexion.data.models.UserModel;
 public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHolder> {
     private ArrayList<UserModel> data;
 
+    public StreamItemClickListener mStreamItemClickListener;
+
     public StreamRVAdapter(ArrayList<UserModel> data){
         this.data = data;
+    }
+
+    public StreamRVAdapter(ArrayList<UserModel> data,StreamItemClickListener listener){
+        this.data = data;
+        mStreamItemClickListener = listener;
     }
 
 
@@ -29,7 +37,7 @@ public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.stream_item,parent,false);
-        return new ViewHolder(view);
+        return new ViewHolder(view,mStreamItemClickListener);
     }
 
     @Override
@@ -44,19 +52,30 @@ public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHo
         return data.size();
     }
 
-    public void setData(ArrayList<UserModel> data) {
-        this.data.clear();
-        this.data.addAll(data);
+    public void setData(ArrayList<UserModel> values) {
+        //this.data.clear();
+        //data.addAll(values);
+        data = values;
+        notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView mUserPhoto;
         private TextView mUserName;
 
-        public ViewHolder(View itemView) {
+        private StreamItemClickListener mStreamItemClickListener;
+
+        public ViewHolder(View itemView,StreamItemClickListener listener) {
             super(itemView);
             mUserPhoto = itemView.findViewById(R.id.user_photo);
             mUserName = itemView.findViewById(R.id.user_name);
+            mStreamItemClickListener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 }
