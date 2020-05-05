@@ -14,6 +14,7 @@ import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
 import tk.cavinc.connexion.ui.fragments.MeetMeFragment;
 import tk.cavinc.connexion.ui.fragments.SpeedDatingFragment;
+import tk.cavinc.connexion.ui.fragments.HotOrNotFragment;
 import tk.cavinc.connexion.ui.fragments.StreamFragment;
 import tk.cavinc.connexion.ui.helpers.WorkViewModel;
 
@@ -58,7 +59,7 @@ public class WorkActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new HotOrNot();
+                    return new HotOrNotFragment();
                 case 1:
                     return new StreamFragment();
                 case 2:
