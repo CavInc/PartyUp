@@ -7,8 +7,8 @@ import java.util.Set;
  */
 
 public interface ConstantManager {
-    //String BASE_URL = "http://192.168.1.23:5000";
-    String BASE_URL = "http://192.168.56.10:5000";
+    String BASE_URL = "http://192.168.1.23:5000";
+    //String BASE_URL = "http://192.168.56.10:5000";
 
     int FEMALE = 0;
     int MALE = 1;

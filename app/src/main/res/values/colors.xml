@@ -17,5 +17,6 @@
     <color name="app_red_dark">#B71C1C</color>
     <color name="app_red">#D32F2F</color>
     <color name="app_red_ligth">#F44336</color>
+    <color name="bottom_navigation_item_background_colors">#FFFFFF</color>
 
 </resources>

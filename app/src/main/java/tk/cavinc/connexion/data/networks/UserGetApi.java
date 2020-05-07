@@ -5,6 +5,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import tk.cavinc.connexion.data.models.UserModel;
+import tk.cavinc.connexion.data.networks.res.GetEventResult;
 import tk.cavinc.connexion.data.networks.res.GetGuid;
 import tk.cavinc.connexion.data.networks.res.GetUserPost;
 import tk.cavinc.connexion.data.networks.res.GetUserRes;
@@ -23,4 +24,9 @@ public interface UserGetApi {
 
    @POST("/api/getusers")
     Call<GetUsersResult> getUsers(@Body GetGuid guid);
+
+
+   @POST("/api/geteventsuser")
+    Call<GetEventResult> getUserEvent(@Body GetGuid guid);
+
 }

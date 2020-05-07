@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bnv_sc1"
+        android:icon="@drawable/ic_looks_one_black_24dp"
+        android:title="1"/>
+    <item
+        android:id="@+id/bnv_sc2"
+        android:icon="@drawable/ic_looks_two_black_24dp"
+        android:title="2"/>
+    <item
+        android:id="@+id/bnv_sc3"
+        android:icon="@drawable/ic_looks_3_black_24dp"
+        android:title="3"/>
+    <item
+        android:id="@+id/bnv_sc4"
+        android:icon="@drawable/ic_looks_4_black_24dp"
+        android:title="4"/>
+
+</menu>
