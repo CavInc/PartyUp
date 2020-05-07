@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ import tk.cavinc.connexion.ui.adapters.EventsAdapter;
  */
 
 public class ScEventsFragments extends Fragment {
+    private static final String TAG = "SEF";
     private DataManager mDataManager;
 
     private RecyclerView mRecyclerView;
@@ -72,8 +75,14 @@ public class ScEventsFragments extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<GetEventResult> call, Throwable t) {
-
+            public void onFailure(Call<GetEventResult> call, final Throwable t) {
+                Log.d(TAG,t.getLocalizedMessage());
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(),t.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }

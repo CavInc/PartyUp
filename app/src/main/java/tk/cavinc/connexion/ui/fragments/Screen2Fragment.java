@@ -69,8 +69,6 @@ public class Screen2Fragment extends Fragment {
                     return new ScChatFragment();
                 case 1:
                     return new ScEventsFragments();
-                default:
-                    break;
             }
             return null;
         }
