@@ -96,13 +96,17 @@ public class Func {
     }
 
     // вернуть строку из url картинки
-    public static String getUtlToStr(String url) {
+    public static String getUtlToStr(String url,boolean resize) {
         String ret = "none";
         if (url == null) {
             return ret;
         }
         try {
-            ret = imgToStr(getBitmapInFile(url));
+            if (resize) {
+                ret = imgToStr(getPicSize(url));
+            } else {
+                ret = imgToStr(getBitmapInFile(url));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

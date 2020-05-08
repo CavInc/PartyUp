@@ -78,7 +78,7 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
     private void sendData() {
         UserModel model = mUserModel.getUserModel();
         if (model.getPhoto().length() != 0) {
-            model.setPhoto(Func.getUtlToStr(model.getPhoto())); // передаем фото в base 64
+            model.setPhoto(Func.getUtlToStr(model.getPhoto(),true)); // передаем фото в base 64
         }
 
         getDataManager().getRetrofit().create(UserGetApi.class)
