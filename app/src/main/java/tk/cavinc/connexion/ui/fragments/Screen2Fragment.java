@@ -41,10 +41,11 @@ public class Screen2Fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.screen2_fragment, container, false);
 
         mWorkPageAdapter = new WorkPageAdapter(getActivity().getSupportFragmentManager());
-        mViewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+
+        mViewPager = (ViewPager) rootView.findViewById(R.id.viewpager_sc2);
         mViewPager.setAdapter(mWorkPageAdapter);
 
-        mTabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
+        mTabLayout = (TabLayout) rootView.findViewById(R.id.tabs_sc2);
         mTabLayout.setupWithViewPager(mViewPager);
 
         return rootView;

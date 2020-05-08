@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tk.cavinc.connexion.R;
-import tk.cavinc.connexion.ui.activitys.WorkActivity;
 
 /**
  * Created by cav on 07.05.20.

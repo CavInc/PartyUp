@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
 
 /**
@@ -27,7 +28,9 @@ public class ScChatFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(R.layout.schat_fragment, container, false);
+
+        return rootView;
     }
 }
 
