@@ -61,6 +61,18 @@ public class ScEventsFragments extends Fragment {
         loadData();
     }
 
+    @Override
+    public void onStop() {
+        Log.d(TAG,"STOP");
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d(TAG,"DESTROY SEF");
+        super.onDestroy();
+    }
+
     private void loadData(){
         mDataManager.getRetrofit().create(UserGetApi.class)
                 .getUserEvent(new GetGuid(mDataManager.getPreManager().getRegistryUserGuid()))

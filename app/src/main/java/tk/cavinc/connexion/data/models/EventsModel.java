@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+import tk.cavinc.connexion.utils.Func;
+
 /**
  * Created by cav on 07.05.20.
  */
@@ -13,15 +15,21 @@ public class EventsModel {
     @SerializedName("event_type")
     @Expose
     private int mEventType;
+
     @SerializedName("event_msg")
     @Expose
     private String mMsg;
+
     @SerializedName("create_date")
     @Expose
+    private String mDateEventStr;
+
     private Date mDateEvent;
+
     @SerializedName("user_name")
     @Expose
     private String mClientName;
+
     @SerializedName("to_guid")
     @Expose
     private String mClientGuid;
@@ -52,5 +60,14 @@ public class EventsModel {
 
     public Date getDateEvent() {
         return mDateEvent;
+    }
+
+    public String getDateEventStr() {
+        return mDateEventStr;
+    }
+
+    public void setDateEventStr(String dateEventStr) {
+        mDateEventStr = dateEventStr;
+        mDateEvent = Func.strToDate(mDateEventStr,"yyyy-MM-dd HH:mm");
     }
 }

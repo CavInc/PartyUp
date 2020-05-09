@@ -35,12 +35,17 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         EventsModel record = data.get(position);
         holder.mMsg.setText(record.getMsg());
-        holder.mDateEvent.setText(Func.dateToStr(record.getDateEvent(),"HH:mm dd-MM-yyyy"));
+        holder.mDateEvent.setText(record.getDateEventStr());
+        //holder.mDateEvent.setText(Func.dateToStr(record.getDateEvent(),"HH:mm dd-MM-yyyy"));
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void setData(ArrayList<EventsModel> value) {
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

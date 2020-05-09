@@ -55,8 +55,8 @@ public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHo
     public void setData(ArrayList<UserModel> values) {
         //this.data.clear();
         //data.addAll(values);
-        data = values;
-        notifyDataSetChanged();
+        //data = values;
+       // notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,7 @@ import tk.cavinc.connexion.data.managers.DataManager;
  */
 
 public class Screen2Fragment extends Fragment {
+    private static final String TAG = "S2F";
     private DataManager mDataManager;
 
     private WorkPageAdapter mWorkPageAdapter;
@@ -55,6 +57,12 @@ public class Screen2Fragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.scr2_menu,menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG,"PAUSE S2F");
     }
 
     private class WorkPageAdapter extends FragmentPagerAdapter {
