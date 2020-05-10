@@ -93,6 +93,7 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
                             getDataManager().getPreManager().setRegistryUserId(data.getUser().getId());
                             getDataManager().getPreManager().setRegistryUserGuid(data.getUser().getGuid());
                             getDataManager().getPreManager().setUserPhoto(mPhotoFile.getAbsolutePath());
+                            getActivity().finish();
                         }
                     }
 

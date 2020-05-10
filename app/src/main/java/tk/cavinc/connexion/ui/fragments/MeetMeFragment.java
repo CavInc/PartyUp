@@ -10,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
+import tk.cavinc.connexion.data.models.LatLot;
 import tk.cavinc.connexion.ui.dialogs.WarningMeetMeDialog;
 
 /**
@@ -74,7 +78,15 @@ public class MeetMeFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        LatLot coordinate = mDataManager.getCoordinate();
+
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+        if (coordinate != null) {
+            LatLng sydney = new LatLng(coordinate.getLat(),coordinate.getLot());
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15));
+            mMap.addMarker(new MarkerOptions().position(sydney).title("My position"));
+        }
 
     }
 }

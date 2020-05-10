@@ -12,5 +12,8 @@ public interface ConstantManager {
 
     int FEMALE = 0;
     int MALE = 1;
+    int OTHER = 2;
 
+    String LAT = "LAT";
+    String LOT = "LOT";
 }
