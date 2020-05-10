@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.managers.DataManager;
@@ -26,9 +28,9 @@ public class Screen2Fragment extends Fragment {
     private static final String TAG = "S2F";
     private DataManager mDataManager;
 
-    private WorkPageAdapter mWorkPageAdapter;
-    private ViewPager mViewPager;
     private TabLayout mTabLayout;
+
+    private FrameLayout mFrameLayout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,13 +44,11 @@ public class Screen2Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.screen2_fragment, container, false);
 
-        mWorkPageAdapter = new WorkPageAdapter(getActivity().getSupportFragmentManager());
-
-        mViewPager = (ViewPager) rootView.findViewById(R.id.viewpager_sc2);
-        mViewPager.setAdapter(mWorkPageAdapter);
-
         mTabLayout = (TabLayout) rootView.findViewById(R.id.tabs_sc2);
-        mTabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.addTab(mTabLayout.newTab().setText("Чаты"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Уведомления"));
+        mTabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
+        viewFragmet(new ScChatFragment(),"CHAT");
 
         return rootView;
     }
@@ -65,39 +65,33 @@ public class Screen2Fragment extends Fragment {
         Log.d(TAG,"PAUSE S2F");
     }
 
-    private class WorkPageAdapter extends FragmentPagerAdapter {
 
-        public WorkPageAdapter(FragmentManager supportFragmentManager) {
-            super(supportFragmentManager);
-        }
-
+    TabLayout.OnTabSelectedListener mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
-        public Fragment getItem(int position) {
-            switch (position){
-                case 0:
-                    return new ScChatFragment();
-                case 1:
-                    return new ScEventsFragments();
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-            return 2;
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position){
-                case 0:
-                    return "Чаты";
-                case 1:
-                    return "Уведомления";
-                default:
-                    return null;
+        public void onTabSelected(TabLayout.Tab tab) {
+            if (tab.getPosition() == 0) {
+                viewFragmet(new ScChatFragment(),"CHAT");
+            } else if (tab.getPosition() == 1) {
+                viewFragmet(new ScEventsFragments(),"EVENTS");
             }
         }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
+
+        }
+    };
+
+    private void viewFragmet(Fragment fragment,String tag){
+        FragmentTransaction trz = getActivity().getSupportFragmentManager().beginTransaction();
+        trz.replace(R.id.container2,fragment,tag);
+        trz.commit();
     }
+
+
 }
