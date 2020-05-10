@@ -1,5 +1,6 @@
 package tk.cavinc.connexion.ui.adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,11 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import tk.cavinc.connexion.R;
 import tk.cavinc.connexion.data.models.UserModel;
 import tk.cavinc.connexion.ui.helpers.StreamItemClickListener;
+import tk.cavinc.connexion.utils.ConstantManager;
 
 /**
  * Created by cav on 29.04.20.
@@ -20,16 +24,19 @@ import tk.cavinc.connexion.ui.helpers.StreamItemClickListener;
 
 public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHolder> {
     private ArrayList<UserModel> data;
+    private Context mContext;
 
     public StreamItemClickListener mStreamItemClickListener;
 
-    public StreamRVAdapter(ArrayList<UserModel> data){
+    public StreamRVAdapter(Context context,ArrayList<UserModel> data){
         this.data = data;
+        mContext = context;
     }
 
-    public StreamRVAdapter(ArrayList<UserModel> data,StreamItemClickListener listener){
+    public StreamRVAdapter(Context context,ArrayList<UserModel> data,StreamItemClickListener listener){
         this.data = data;
         mStreamItemClickListener = listener;
+        mContext = context;
     }
 
 
@@ -44,6 +51,13 @@ public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserModel record = data.get(position);
         holder.mUserName.setText(record.getName());
+        if (record.getPhoto() != null) {
+            Picasso.with(mContext)
+                    .load(ConstantManager.BASE_URL+ConstantManager.GET_IMAGES+"/"+record.getPhoto())
+                    .fit()
+                    .into(holder.mUserPhoto);
+
+        }
 
     }
 

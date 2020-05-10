@@ -32,11 +32,9 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.0'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
-   // implementation 'com.google.android.gms:play-services-maps:17.0.0'
-
+    // implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation('com.google.android.gms:play-services-maps:11.0.4') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-
-
+    implementation 'com.squareup.picasso:picasso:2.3.2'
 }

@@ -86,7 +86,7 @@ public class HotOrNotFragment extends Fragment {
         Log.d(TAG,"UPDATE UI");
         ArrayList<UserModel> data = model.getUsers();
         if (mAdapter == null){
-            mAdapter = new StreamRVAdapter(data);
+            mAdapter = new StreamRVAdapter(mDataManager.getContext(),data);
             mRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.setData(data);

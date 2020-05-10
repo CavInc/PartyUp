@@ -16,4 +16,6 @@ public interface ConstantManager {
 
     String LAT = "LAT";
     String LOT = "LOT";
+    String GET_IMAGES = "/api/getimage";
+
 }
