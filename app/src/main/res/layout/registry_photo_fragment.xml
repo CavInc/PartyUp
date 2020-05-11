@@ -10,13 +10,33 @@
         android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <ImageView
-        android:id="@+id/reg_photo_img"
-        android:layout_below="@id/reg_photo_msg"
+    <FrameLayout
+        android:id="@+id/reg_photo_fx"
+        android:background="@color/app_gray_50"
+        android:layout_below="@+id/reg_photo_msg"
         android:layout_above="@+id/button_lv"
-        android:layout_marginBottom="24sp"
+        android:layout_marginBottom="24dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/reg_photo_img"
+            android:layout_below="@id/reg_photo_msg"
+            android:layout_above="@+id/button_lv"
+            android:layout_marginBottom="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/msg_photo"
+            android:text="Добавить фотографию"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
 
     <LinearLayout
         android:id="@+id/button_lv"
@@ -28,13 +48,6 @@
             android:id="@+id/reg_photo_bt"
             android:layout_weight="1"
             android:text="Фото"
-            android:background="@drawable/button_border_gray_bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/reg_photo_galery"
-            android:text="Галерея"
-            android:layout_weight="1"
             android:background="@drawable/button_border_gray_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

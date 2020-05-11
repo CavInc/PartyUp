@@ -58,7 +58,6 @@ public class RegistryPhotoFragment extends BaseFragment implements View.OnClickL
         mPhoto = rootView.findViewById(R.id.reg_photo_img);
         rootView.findViewById(R.id.registry_next).setOnClickListener(this);
         rootView.findViewById(R.id.reg_photo_bt).setOnClickListener(this);
-        rootView.findViewById(R.id.reg_photo_galery).setOnClickListener(this);
 
         return rootView;
     }
