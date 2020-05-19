@@ -12,6 +12,11 @@ public class UserModel {
     @Expose
     private int mId;
 
+    @SerializedName("guid")
+    @Expose
+    private String mGuid;
+
+
     @SerializedName("name")
     @Expose
     private String mName;
@@ -121,5 +126,13 @@ public class UserModel {
 
     public void setPass(String pass) {
         mPass = pass;
+    }
+
+    public String getGuid() {
+        return mGuid;
+    }
+
+    public void setGuid(String guid) {
+        mGuid = guid;
     }
 }

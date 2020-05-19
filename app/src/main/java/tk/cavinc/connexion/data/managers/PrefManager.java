@@ -15,6 +15,8 @@ public class PrefManager {
     private static final String LOGIN = "LOGIN_USER";
     private static final String USER_PHOTO = "USER_PHOTO";
     private static final String WARNING_MEETME = "WMME";
+    private static final String USER_EMAIL = "USER_EMAL";
+    private static final String USER_NAME = "USER_NAME";
     private SharedPreferences mSharedPreferences;
 
     public PrefManager(){
@@ -69,6 +71,18 @@ public class PrefManager {
     public void setWarningMeetme(boolean flag){
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putBoolean(WARNING_MEETME,flag);
+        editor.apply();
+    }
+
+    public void setRegistryUserEmail(String registryUserEmail) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(USER_EMAIL,registryUserEmail);
+        editor.apply();
+    }
+
+    public void setRegistryUserName(String registryUserName) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(USER_NAME,registryUserName);
         editor.apply();
     }
 }

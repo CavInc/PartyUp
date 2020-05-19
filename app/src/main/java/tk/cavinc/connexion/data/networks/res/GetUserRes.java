@@ -3,6 +3,8 @@ package tk.cavinc.connexion.data.networks.res;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import tk.cavinc.connexion.data.models.UserModel;
+
 /**
  * Created by cav on 27.04.20.
  */
@@ -24,7 +26,7 @@ public class GetUserRes {
 
     @SerializedName("user")
     @Expose
-    private User user;
+    private UserModel user;
 
     public boolean isStatus() {
         return status;
@@ -38,36 +40,12 @@ public class GetUserRes {
         return error;
     }
 
-    public User getUser() {
+    public UserModel getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 
-    public class User{
-        @SerializedName("id")
-        @Expose
-        private Integer id;
-        @SerializedName("guid")
-        @Expose
-        private String guid;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getGuid() {
-            return guid;
-        }
-
-        public void setGuid(String guid) {
-            this.guid = guid;
-        }
-    }
 }
