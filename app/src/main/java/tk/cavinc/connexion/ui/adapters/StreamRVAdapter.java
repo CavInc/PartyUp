@@ -51,7 +51,7 @@ public class StreamRVAdapter extends RecyclerView.Adapter<StreamRVAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserModel record = data.get(position);
         holder.mUserName.setText(record.getName());
-        if (record.getPhoto() != null) {
+        if (record.getPhoto() != null & record.getPhoto().length() != 0) {
             Picasso.with(mContext)
                     .load(ConstantManager.BASE_URL+ConstantManager.GET_IMAGES+"/"+record.getPhoto())
                     .fit()
